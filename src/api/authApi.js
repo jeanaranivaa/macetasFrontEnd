@@ -29,3 +29,13 @@ export const recoveryRequest = async (email) => {
     }, 800);
   });
 };
+
+export const verifyCodeRequest = async (code) => {
+  try {
+    // Ajusta la ruta '/auth/verify-code' según la tenga estructurada tu backend
+    const response = await api.post('/auth/verify-code', { code }); 
+    return response.data; // O response si tu estructura retorna la respuesta directa
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error al verificar el código.');
+  }
+};
